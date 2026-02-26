@@ -1,7 +1,7 @@
-import "./index.css" 
+import './index.css'
 
 function App() {
-  return <div>asd</div>
+  return <div className="text-amber-400">asdas</div>
 }
 
 export default App

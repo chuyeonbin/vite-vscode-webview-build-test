@@ -1,68 +1,159 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+@import 'tailwindcss';
 
 body {
+  font-family:
+    'Pretendard Variable',
+    Pretendard,
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    'Helvetica Neue',
+    'Segoe UI',
+    'Apple SD Gothic Neo',
+    'Noto Sans KR',
+    'Malgun Gothic',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-background);
+  color: var(--color-text);
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  overflow: hidden;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+html {
+  font-size: 16px;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+* {
+  box-sizing: border-box;
+}
+
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #f9fafb;
+  --color-text: #0a0a0a;
+  --color-text-secondary: #6b7280;
+  --color-border: #e5e7eb;
+  --color-primary: #3b82f6;
+
+  --color-activity-bar: #f3f3f3;
+  --color-sidebar: #ffffff;
+  --color-header: #f3f3f3;
+  --color-editor: #ffffff;
+  --color-panel: #ffffff;
+  --color-statusbar: #007acc;
+}
+
+/* 라이트 모드 (기본) */
+:root {
+  --color-background: #ffffff;
+  --color-foreground: #f9fafb;
+  --color-text: #0a0a0a;
+  --color-text-secondary: #6b7280;
+  --color-border: #e5e7eb;
+  --color-primary: #3b82f6;
+
+  /* VS Code 스타일 컴포넌트 색상 (라이트) */
+  --color-activity-bar: #f3f3f3;
+  --color-sidebar: #ffffff;
+  --color-header: #f3f3f3;
+  --color-editor: #ffffff;
+  --color-panel: #ffffff;
+  --color-statusbar: #007acc;
+}
+
+/* 라이트 모드 (명시적 - 시스템 다크여도 라이트 유지) */
+html.light {
+  --color-background: #ffffff;
+  --color-foreground: #f9fafb;
+  --color-text: #0a0a0a;
+  --color-text-secondary: #6b7280;
+  --color-border: #e5e7eb;
+  --color-primary: #3b82f6;
+
+  --color-activity-bar: #f3f3f3;
+  --color-sidebar: #ffffff;
+  --color-header: #f3f3f3;
+  --color-editor: #ffffff;
+  --color-panel: #ffffff;
+  --color-statusbar: #007acc;
+}
+
+/* 다크 모드 (VS Code 스타일) */
+html.dark {
+  --color-background: #111111;
+  --color-foreground: #252526;
+  --color-text: #cccccc;
+  --color-text-secondary: #858585;
+  --color-border: #2b2b2b;
+  --color-primary: #007acc;
+
+  --color-activity-bar: #333333;
+  --color-sidebar: #252526;
+  --color-header: #3c3c3c;
+  --color-editor: #1e1e1e;
+  --color-panel: #1e1e1e;
+  --color-statusbar: #007acc;
+}
+
+/* 시스템 다크모드 자동 감지 (선택사항) */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --color-background: #1e1e1e;
+    --color-foreground: #252526;
+    --color-text: #cccccc;
+    --color-text-secondary: #858585;
+    --color-border: #2b2b2b;
+    --color-primary: #007acc;
+
+    --color-activity-bar: #333333;
+    --color-sidebar: #252526;
+    --color-header: #3c3c3c;
+    --color-editor: #1e1e1e;
+    --color-panel: #1e1e1e;
+    --color-statusbar: #007acc;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+}
+/* 전체 스크롤바 공통 설정 */
+::-webkit-scrollbar {
+  width: 4px; /* 얇게 */
+  height: 4px; /* 수평 스크롤도 동일 */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* 트랙 거의 안 보이게 */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 100, 100, 0.3); /* 반투명 회색 */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 100, 100, 0.6); /* 호버 시 더 진하게 */
+}
+
+/* 다크 모드용 */
+html.dark ::-webkit-scrollbar-thumb {
+  background-color: rgba(200, 200, 200, 0.2);
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(200, 200, 200, 0.5);
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: transparent;
 }
