@@ -3,9 +3,29 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "main": "./dist/extension.js",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:react-webview.start"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "react-webview.start",
+        "title": "Start React Webview",
+        "category": "React"
+      }
+    ]
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -p tsconfig.extension.json && tsc -b && vite build",
+    "build:ext": "tsc -p tsconfig.extension.json",
     "lint": "biome lint --write",
     "format": "biome format --write",
     "check": "biome check",
@@ -13,16 +33,21 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
+    "@tanstack/react-router": "^1.163.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "tailwindcss": "^4.1.18",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.4",
+    "@tanstack/react-router-devtools": "^1.163.2",
+    "@tanstack/router-plugin": "^1.163.2",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
+    "@types/vscode": "^1.100.0",
+    "@types/vscode-webview": "^1.57.0",
     "@vitejs/plugin-react": "^5.1.1",
     "babel-plugin-react-compiler": "^1.0.0",
     "globals": "^16.5.0",
